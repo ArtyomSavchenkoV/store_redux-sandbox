@@ -8,6 +8,6 @@ const ErrorIndicator = () => {
             Uuups! Im sorry. Something went terribly wrong.
         </div>
     )
-}
+};
 
 export default ErrorIndicator;

@@ -1,16 +1,14 @@
 import React from 'react';
 import { BookstoreServiceConsumer } from "../bookstore-service-context";
 
-const withBookstoreService = (mapBookstoreService) => (Component) => {
+const withBookstoreService = () => (Component) => {
     return (props) => {
         return (
             <BookstoreServiceConsumer>
                 {
                     (bookstoreService) => {
-                        const getData = mapBookstoreService(bookstoreService);
                         return (
-                            <Component {...props} {...getData}/>
-
+                            <Component {...props} bookstoreService={bookstoreService}/>
                         )
                     }
                 }
