@@ -1,23 +1,20 @@
-import React, {Component} from 'react';
-import BookstoreService from '../../services/stub-bookstore-service';
-import { BookstoreServiceProvider } from '../bookstore-service-context';
+import React from 'react';
+
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { HomePage, CartPage } from '../pages';
 
 import './app.css';
 
-export default class extends Component {
-    constructor(){
-        super();
+const App = () => {
+    return (
+        <div className="app">
+            <Switch>
+                <Route path='/' exact render={()=><HomePage />} />
+                <Route path='/cart' exact render={()=><CartPage />} />
+                <Route render={()=><Redirect to="/" />} />
+            </Switch>
+        </div>
+    )
+};
 
-        this.state = {
-            bookstoreService: new BookstoreService()
-        }
-    }
-
-    render(){
-        return (
-            <BookstoreServiceProvider value={this.state.bookstoreService}>
-                <h1>App!!!</h1>
-            </BookstoreServiceProvider>
-        )
-    }
-}
+export default App;
