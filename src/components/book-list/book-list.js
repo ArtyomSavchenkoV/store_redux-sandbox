@@ -16,14 +16,10 @@ class BookList extends Component{
     componentDidMount() {
         const { bookstoreService, booksLoaded, showLoading } = this.props;
         showLoading();
-        //const data = bookstoreService.getBooks();
         bookstoreService.getBooks().then((data) => {
             booksLoaded( data );
         })
             .catch()
-        //console.log(actions);
-
-
     }
 
     render () {
