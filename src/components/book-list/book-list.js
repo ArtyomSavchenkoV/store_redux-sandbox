@@ -3,33 +3,34 @@ import { connect } from 'react-redux';
 import { withBookstoreService } from '../hoc';
 import { compose } from "../../utils";
 
-import { booksLoaded } from "../../actions";
+import { booksLoaded, showLoading } from "../../actions";
 
 import BookListItem from '../book-list-item';
 //import ErrorIndicator from '../error-indicator';
-//import Spinner from '../spinner';
+import Spinner from '../spinner';
 
 import './book-list.css';
 
 class BookList extends Component{
-    constructor() {
-        super();
-        this.state = {
-            books: []
-        }
-    }
 
     componentDidMount() {
-        const { bookstoreService } = this.props;
-        const data = bookstoreService.getBooks();
+        const { bookstoreService, booksLoaded, showLoading } = this.props;
+        showLoading();
+        //const data = bookstoreService.getBooks();
+        bookstoreService.getBooks().then((data) => {
+            booksLoaded( data );
+        })
+            .catch()
         //console.log(actions);
-        this.props.booksLoaded( data );
+
 
     }
 
     render () {
+        const { books, loading } = this.props;
 
-        const { books } = this.props;
+        if (loading) return <Spinner />;
+
         const listItems = books.map((book) => {
             return (
                 <li key={book.id}>
@@ -45,15 +46,17 @@ class BookList extends Component{
     }
 }
 
-const mapStoreToProps = ({books}) => {
+const mapStoreToProps = ({books, loading}) => {
     return {
-        books
+        books,
+        loading
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        booksLoaded: (params) => dispatch(booksLoaded(params))
+        booksLoaded: (params) => dispatch(booksLoaded(params)),
+        showLoading: () => dispatch(showLoading())
     };
 };
 
