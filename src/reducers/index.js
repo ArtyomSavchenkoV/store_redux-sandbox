@@ -1,7 +1,16 @@
 const initialState = {
     books: [],
     loading: true,
-    error: null
+    error: null,
+    cartItems: [
+        {
+            id: 1,
+            title: 'JavaScript. Шаблоны',
+            count: 2,
+            total: 90
+        }
+    ],
+    orderTotal: 50,
 };
 
 const reducer = (state = initialState, action) => {
