@@ -14,18 +14,16 @@ import './book-list.css';
 class BookList extends Component{
 
     componentDidMount() {
-        const { bookstoreService, booksLoaded, showLoading, booksError } = this.props;
-        showLoading();
-        bookstoreService.getBooks().then(booksLoaded)
-            .catch((error) => booksError(error));
+        const { fetchBooks } = this.props;
+        fetchBooks();
     }
 
     render () {
-        const { books, loading, loadError } = this.props;
+        const { books, loading, error } = this.props;
 
         if (loading) return <Spinner />;
 
-        if (loadError) return <ErrorIndicator label={loadError}/>;
+        if (error) return <ErrorIndicator error={error}/>;
 
         const listItems = books.map((book) => {
             return (
@@ -46,15 +44,20 @@ const mapStoreToProps = ({books, loading, error}) => {
     return {
         books,
         loading,
-        loadError: error
+        error
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+    const { bookstoreService } = ownProps;
     return {
-        booksLoaded: (params) => dispatch(booksLoaded(params)),
-        showLoading: () => dispatch(showLoading()),
-        booksError: (error) => dispatch(booksError(error))
+        fetchBooks: () => {
+            dispatch(showLoading());
+            bookstoreService.getBooks()
+                .then((books) => dispatch(booksLoaded(books)))
+                .catch((err) => dispatch(booksError(err)))
+
+        },
     };
 };
 

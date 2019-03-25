@@ -23,7 +23,7 @@ export default class BookstoreService {
                 ()=> {
                     const randomError = Math.random();
                     if (randomError > 0.3) return resolve(this.data);
-                    return reject(new Error('something bad happened'))
+                    return reject(new Error('dummy error from dummy bookstore-service'))
                 }
                 , 1000
             )

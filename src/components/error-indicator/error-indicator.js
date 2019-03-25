@@ -4,14 +4,15 @@ import './error-indicator.css';
 
 import bender from './bender.png';
 
-const ErrorIndicator = (label) => {
-    console.log(label);
+const ErrorIndicator = ({ error }) => {
+    console.log(error);
     return (
         <div className="error-indicator">
             <h3>Uuups! Im sorry. </h3>
-            <span>Something went terribly wrong!</span>
+            <h5>Something went terribly wrong!</h5>
             <img src={bender} alt={'Error.'} />
-            <span>Already I am going to fix it.</span>
+            <h5>I am already going to fix it.. maybe next time.</h5>
+            <div>For get more details: see my shining a.. log!</div>
 
         </div>
     )
