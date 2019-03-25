@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BookList from '../../book-list';
+import { BookList } from '../../../containers';
 import ShoppingCartTable from '../../shopping-cart-table';
 
 import './home-page.css';
