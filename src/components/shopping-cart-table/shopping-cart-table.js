@@ -21,7 +21,7 @@ const ShoppingCartTable = () => {
                         <td>1</td>
                         <td>Book</td>
                         <td>5</td>
-                        <td>₽50</td>
+                        <td>₽46</td>
                         <td>
                             <button className={'btn btn-outline-danger btn-sm'}>
                                 <i className={'fa fa-trash-o'} />

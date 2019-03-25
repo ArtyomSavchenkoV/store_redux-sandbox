@@ -12,7 +12,15 @@ const showLoading = () => {
     }
 };
 
+const booksError = (error) => {
+    return{
+        type: 'BOOKS_ERROR',
+        payload: error
+    }
+};
+
 export {
     booksLoaded,
-    showLoading
+    showLoading,
+    booksError
 };

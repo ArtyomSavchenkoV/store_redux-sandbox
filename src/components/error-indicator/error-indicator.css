@@ -1,0 +1,10 @@
+.error-indicator {
+    border: solid 2px #cc4545;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+}
+
+.error-indicator h3 {
+    color: #cc4545;
+}

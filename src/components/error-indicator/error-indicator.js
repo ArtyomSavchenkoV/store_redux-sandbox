@@ -2,11 +2,17 @@ import React from 'react';
 
 import './error-indicator.css';
 
-const ErrorIndicator = () => {
+import bender from './bender.png';
+
+const ErrorIndicator = (label) => {
+    console.log(label);
     return (
         <div className="error-indicator">
             <h3>Uuups! Im sorry. </h3>
-            <div>Something went terribly wrong!</div>
+            <span>Something went terribly wrong!</span>
+            <img src={bender} alt={'Error.'} />
+            <span>Already I am going to fix it.</span>
+
         </div>
     )
 };
