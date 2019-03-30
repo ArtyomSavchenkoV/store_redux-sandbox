@@ -1,4 +1,4 @@
-const updatedCart = (cartItems, cartItemIndex, cartItem) => {
+const updateCart = (cartItems, cartItemIndex, cartItem) => {
     if (cartItem.count < 1) {
         return [
             ...cartItems.slice(0, cartItemIndex),
@@ -19,7 +19,7 @@ const updatedCart = (cartItems, cartItemIndex, cartItem) => {
     ];
 };
 
-const updatedCartItem = (cartItem = {}, book, quantity) => {
+const updateCartItem = (cartItem = {}, book, quantity) => {
     const {
         id = book.id,
         title = book.title,
@@ -51,8 +51,8 @@ const updateOrder = ({shoppingCart, bookList}, bookId, quantity) => {
         return {...shoppingCart};
     }
 
-    const newCartItem = updatedCartItem(cartItems[cartItemIndex], book, quantity);
-    const newCart =updatedCart(cartItems, cartItemIndex, newCartItem);
+    const newCartItem = updateCartItem(cartItems[cartItemIndex], book, quantity);
+    const newCart = updateCart(cartItems, cartItemIndex, newCartItem);
     return {
         ...shoppingCart,
         cartItems: newCart,

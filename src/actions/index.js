@@ -1,7 +1,5 @@
 const booksRequested = () => {
-    return {
-        type: 'FETCH_BOOKS_REQUEST'
-    }
+    return 'FETCH_BOOKS_REQUEST';
 };
 
 const booksLoaded = (newBooks = []) => {
@@ -18,7 +16,7 @@ const booksError = (error) => {
     }
 };
 
-const fetchBooks = (dispatch, bookstoreService) => () => {
+const fetchBooks = (bookstoreService) => () => (dispatch) => {
     dispatch(booksRequested());
     bookstoreService.getBooks()
         .then((books) => dispatch(booksLoaded(books)))
