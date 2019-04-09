@@ -1,3 +1,14 @@
+/**
+ * Stub book store service, 
+ * emulate internet API server requests. With emulate delays and errors.
+ * Use only for develope.
+ * 
+ * @class BookstoreService
+ * 
+ * @method getBooks
+ * @return {Promise} ".then" contains data object
+ */
+
 export default class BookstoreService {
     constructor() {
         this.data = [{
