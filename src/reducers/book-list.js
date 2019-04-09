@@ -1,4 +1,14 @@
+/**
+ * a part of reducer, responsible for part of store - bookList.
+ * 
+ * @param state
+ * @param action
+ * 
+ * @return {object} new bookList
+ */
+
 const updateBookList = (state, action) => {
+	//Create new bookList
     if (state === undefined) {
         return {
             books: [],
